@@ -22,7 +22,7 @@ export class SwapiService {
     }
 
     getPlanet(id: number):Promise<any> {
-        const PLANET_URL = `${PLANETS_URL}/id`;
+        const PLANET_URL = `${PLANETS_URL}${id}`;
         return this.http
             .get(PLANET_URL)
             .toPromise()
@@ -50,7 +50,7 @@ export class SwapiService {
         const result = res.json();
 
         result.page = page;
-        result.pages = Math.ceil(result.count / result.results.length);
+        result.pages = Math.ceil(result.count / 10);
 
         return result;
     }

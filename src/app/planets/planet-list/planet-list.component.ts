@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 })
 export class PlanetListComponent implements OnInit {
     planets:any = [];
+    currentPage:number = 1;
+    totalPages:number = 1;
 
     constructor(private swapiService:SwapiService, private router:Router) {}
 
@@ -17,6 +19,8 @@ export class PlanetListComponent implements OnInit {
             .getPlanets()
             .then((data) => {
                 this.planets = data.results;
+                this.currentPage = data.page;
+                this.totalPages = data.pages;
             });
     }
 

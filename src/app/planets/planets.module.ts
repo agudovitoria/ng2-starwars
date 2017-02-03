@@ -10,6 +10,7 @@ import { PopulationPipe } from './population.pipe';
 import { ListItemComponent } from './planet-list/list-item/list-item.component';
 import { PlanetComponent } from './planet/planet.component';
 import { PlanetsPageComponent } from './planets-page/planets-page.component';
+import { PaginationComponent } from '../core/pagination/pagination.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { PlanetsPageComponent } from './planets-page/planets-page.component';
         PopulationPipe,
         ListItemComponent,
         PlanetComponent,
-        PlanetsPageComponent
+        PlanetsPageComponent,
+        PaginationComponent
     ],
     imports: [
         CommonModule,
