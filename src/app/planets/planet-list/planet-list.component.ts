@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from "../../core/swapi.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-planet-list',
@@ -9,7 +10,7 @@ import { SwapiService } from "../../core/swapi.service";
 export class PlanetListComponent implements OnInit {
     planets:any = [];
 
-    constructor(private swapiService:SwapiService) {}
+    constructor(private swapiService:SwapiService, private router:Router) {}
 
     ngOnInit() {
         this.swapiService
@@ -20,7 +21,14 @@ export class PlanetListComponent implements OnInit {
     }
 
     goToPlanetDetails(planet) {
-        console.log(planet);
+        const splittedUrl:any = planet.url.split('/');
+        splittedUrl.pop();
+        const id:any = splittedUrl.pop();
+        const commands:any = ['planets', id];
+        const navigationExtras:any = {};
+        console.log('Planeta seleccionado', planet);
+        console.log(`Redireccionando a ${commands.join('/')}`);
+        this.router.navigate(commands, navigationExtras);
     }
 
 }

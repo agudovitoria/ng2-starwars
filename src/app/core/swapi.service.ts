@@ -10,41 +10,49 @@ const PLANETS_URL = `${BASE_URL}planets/`;
 @Injectable()
 export class SwapiService {
 
-  constructor (private http: Http) {
-  }
+    constructor(private http: Http) {
+    }
 
-  getPeople (page: number = 1): Promise<any> {
-    return this.list(PEOPLE_URL, page);
-  }
+    getPeople(page: number = 1): Promise<any> {
+        return this.list(PEOPLE_URL, page);
+    }
 
-  getPlanets (page: number = 1): Promise<any> {
-    return this.list(PLANETS_URL, page);
-  }
+    getPlanets(page: number = 1): Promise<any> {
+        return this.list(PLANETS_URL, page);
+    }
 
-  private list (url: string, page: number) {
-    return this
-    .http
-    .get(url, this.createPaginationRequestOptions(page))
-    .toPromise()
-    .then((res: Response) => this.extractListData(res, page));
-  }
+    getPlanet(id: number):Promise<any> {
+        const PLANET_URL = `${PLANETS_URL}/id`;
+        return this.http
+            .get(PLANET_URL)
+            .toPromise()
+            .then((res: Response) => res.json());
+    }
 
-  private createPaginationRequestOptions (page: number): RequestOptions  {
-    const searchParams: URLSearchParams = new URLSearchParams();
-    searchParams.set('page', `${page}`);
+    private list(url: string, page: number) {
+        return this
+            .http
+            .get(url, this.createPaginationRequestOptions(page))
+            .toPromise()
+            .then((res: Response) => this.extractListData(res, page));
+    }
 
-    return <RequestOptions>{
-      search: searchParams
-    };
-  }
+    private createPaginationRequestOptions(page: number): RequestOptions {
+        const searchParams: URLSearchParams = new URLSearchParams();
+        searchParams.set('page', `${page}`);
 
-  private extractListData (res: Response, page: number) {
-    const result = res.json();
+        return <RequestOptions>{
+            search: searchParams
+        };
+    }
 
-    result.page = page;
-    result.pages = Math.ceil(result.count / result.results.length);
+    private extractListData(res: Response, page: number) {
+        const result = res.json();
 
-    return result;
-  }
+        result.page = page;
+        result.pages = Math.ceil(result.count / result.results.length);
+
+        return result;
+    }
 
 }
