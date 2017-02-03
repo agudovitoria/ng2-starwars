@@ -7,11 +7,13 @@ import { RouterModule } from "@angular/router";
 
 import { routes } from './planets.routes';
 import { PopulationPipe } from './population.pipe';
+import { ListItemComponent } from './planet-list/list-item/list-item.component';
 
 @NgModule({
     declarations: [
         PlanetListComponent,
         PopulationPipe,
+        ListItemComponent,
     ],
     imports: [
         CommonModule,

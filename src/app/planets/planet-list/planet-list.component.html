@@ -1,6 +1,6 @@
 <h2>Listado de planetas</h2>
 <ul>
   <li *ngFor="let planet of planets">
-    {{planet.name}} - {{planet.population | population}}
+        <list-item [planet]="planet" (onPlanetSelected)="goToPlanetDetails($event)"></list-item>
   </li>
 </ul>

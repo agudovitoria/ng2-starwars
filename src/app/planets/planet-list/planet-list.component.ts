@@ -19,4 +19,8 @@ export class PlanetListComponent implements OnInit {
             });
     }
 
+    goToPlanetDetails(planet) {
+        console.log(planet);
+    }
+
 }
