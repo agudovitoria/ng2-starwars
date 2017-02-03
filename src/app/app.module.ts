@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { PlanetsModule } from "./planets/planets.module";
 import { RouterModule } from "@angular/router";
 
 import { routes } from './app.routes';
@@ -23,8 +22,7 @@ import { routes } from './app.routes';
         FormsModule,
         HttpModule,
         RouterModule.forRoot(routes),
-        CoreModule.forRoot(),
-        PlanetsModule
+        CoreModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

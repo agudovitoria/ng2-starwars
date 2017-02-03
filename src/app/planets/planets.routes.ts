@@ -4,7 +4,7 @@ import { PlanetComponent } from "./planet/planet.component";
 import { PlanetsPageComponent } from "./planets-page/planets-page.component";
 export const routes: Routes = [
     {
-        path: 'planets',
+        path: '',
         component: PlanetsPageComponent,
         children: [
             {
